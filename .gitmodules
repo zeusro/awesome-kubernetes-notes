@@ -1,3 +1,0 @@
-[submodule "build/html"]
-	path = build/html
-	url = git@github.com:zeusro/awesome-kubernetes-notes-release.git
