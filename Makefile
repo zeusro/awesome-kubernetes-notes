@@ -38,6 +38,5 @@ submodule_commit:
 
 auto_commit:  rebuild 
 	git add .
-	# 需要注意的是，每行命令在一个单独的shell中执行。这些Shell之间没有继承关系。
 	git commit -am "$(now)"
 	git push
