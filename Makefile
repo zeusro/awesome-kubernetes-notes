@@ -22,19 +22,21 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 rebuild:
-	rm -rf build/
+	# submodule 不能删除
+	# rm -rf build/
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-docker_build:
+docker: help 
 	docker build -t $(IMAGE) .
 	# docker run -it -p 8000:8000 --rm -v "$(pwd)/docs":/home/python/docs sphinx-autobuild
 	# docker run -it -p 8000:8000 --rm -v "$(pwd)/source":/home/python/docs  -v "$(pwd)/build/html":/home/python/docs/_build/html $IMAGE
 	# docker run -it -p 8000:8000 --rm -v "$(pwd)/build/html":/home/python/docs/_build/html $IMAGE
 	docker run -it -p 8000:8000 --rm $(IMAGE)  
-	
-docker: help docker_build
 
-auto_commit:  rebuild
+submodule_commit:
+	cd "$(BUILDDIR)/html" && make
+
+auto_commit:  rebuild submodule_commit
 	git add .
 	# 需要注意的是，每行命令在一个单独的shell中执行。这些Shell之间没有继承关系。
 	git commit -am "$(now)"
