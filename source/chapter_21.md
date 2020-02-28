@@ -20,6 +20,17 @@ mac/linux的执行ktctl connect以后就已经在vpn下了。
 
 由于 Windows 不支持 sshuttle,所以只能用 socks5,socks5是走的ssh端口转发
 
+`kt-connect` 有 2 大组件：
+
+### 21.2.1 Connect
+
+Connect的作用是打通本地与集群之间的网络隔离，从而确保本地应用可以直接访问Kubernetes集群内部署的其它服务。同时Connect会提供集群的DNS服务，从而让开发者可以直接从本地访问集群内的资源如PodIP，ClusterIP以及DNS域名。
+
+### 21.2.2 Exchange
+
+Exchange负责打通从集群到本地的流量转发问题，Exchange会完全取代在集群中的某个应用实例，接管所有接收到的流量并且转发到本地服务端口，从而实现从远端到本地的联调测试。
+
+
 中文教程:
 https://alibaba.github.io/kt-connect/#/zh-cn/quickstart
 
