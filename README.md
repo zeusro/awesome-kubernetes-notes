@@ -22,9 +22,7 @@
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-
-    
-## 学习链接
+## 参考资料
 
 ### 建议学习路线
 
@@ -77,7 +75,12 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-a
 https://cr.console.aliyun.com/
 
 
-### 文档
+### 视频
+
+* [马哥(docker容器技术+k8s集群技术)](https://www.bilibili.com/video/av35847195/?p=16&t=3931)
+* [微服务容器化实战](https://www.acfun.cn/v/ac10232871)
+
+### 其他文档
 
 * [Kubernetes官网教程](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 * [Kubernetes中文社区](https://www.kubernetes.org.cn/k8s)
@@ -91,21 +94,12 @@ https://cr.console.aliyun.com/
 * [云原生之路](https://jimmysong.io/kubernetes-handbook/cloud-native/from-kubernetes-to-cloud-native.html)
 * [CNCF Cloud Native Interactive Landscape](https://landscape.cncf.io/)
 
-### 视频
-
-* [马哥(docker容器技术+k8s集群技术)](https://www.bilibili.com/video/av35847195/?p=16&t=3931)
-* [微服务容器化实战](https://www.acfun.cn/v/ac10232871)
-
 
 ## TODO
 
-- [x] ETCD详解
-- [ ] 告警配置发送
 - [ ] 日志收集
 - [ ] CI/CD的DevOPS相关
-- [x] [国产容器管理平台KubeSphere实战排错](https://kubesphere.io/zh-CN/)
-
----
+- [ ] 完善 Kubernetes 生态系统
 
 如果此笔记对您有任何帮助，欢迎打钱🎉
 

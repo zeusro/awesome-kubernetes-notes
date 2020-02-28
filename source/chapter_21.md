@@ -3,7 +3,7 @@
 
 ## 21.1 [kube-eventer](https://github.com/AliyunContainerService/kube-eventer)
 
-Kubernetes 的事件导出工具,可以把 Kubernetes 的 Event 推送到多个数据源,比如钉钉,mysql,微信群
+Kubernetes 的事件导出工具,可以把 Kubernetes 的 Event 推送到多个数据源,比如钉钉,mysql,微信群等。
 
 ## 21.2 [kt-connect](https://github.com/alibaba/kt-connect)
 
@@ -22,3 +22,7 @@ mac/linux的执行ktctl connect以后就已经在vpn下了。
 
 中文教程:
 https://alibaba.github.io/kt-connect/#/zh-cn/quickstart
+
+`kt-connect` 目前 Istio 相关的调试工具正在开发中，
+
+[相关项目](https://github.com/alibaba/virtual-environment)
