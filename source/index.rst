@@ -18,8 +18,11 @@ Welcome to kaliarch kubernetes-note's documentation!
    chapter_5
    chapter_6   
    awesome-kubernetes-notes
-   
-
+   chapter_20.md
+   chapter_21.rst
+   chapter_22.rst
+   chapter_23.rst
+   chapter_24.rst   
 
 Indices and tables
 ==================
