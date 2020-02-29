@@ -376,9 +376,18 @@ HPA Controller中有一个tolerance（容忍力）的概念，它允许一定范
 参考链接：
 [Kubernetes 中 Pod 弹性伸缩详解与使用](https://cloud.tencent.com/developer/article/1005406)
 
-## 6.8 阿里云Kubernetes问题
+## 6.8 [kube-apiserver](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kube-apiserver/)
 
-### 6.8.1 修改默认ingress
+`kube-apiserver` 是一组运行在 `master` 上面的特殊容器。以 阿里云 kubernetes 为例 （`kubeadm`创建的 kubernetes 同理）
+
+在 `/etc/kubernetes/manifests/` 下面定义了三个文件
+1. kube-apiserver.yaml
+1. kube-controller-manager.yaml
+1. kube-scheduler.yaml
+
+## 6.99 阿里云Kubernetes问题
+
+### 6.99.1 修改默认ingress
 
 新建一个指向ingress的负载均衡型svc,然后修改一下`kube-system`下`nginx-ingress-controller`启动参数.
 
@@ -393,7 +402,7 @@ HPA Controller中有一个tolerance（容忍力）的概念，它允许一定范
             - '--v=2'
 ```
 
-### 6.8.2 LoadBalancer服务一直没有IP
+### 6.99.2 LoadBalancer服务一直没有IP
 
 具体表现是EXTERNAL-IP一直显示pending.
 
@@ -405,7 +414,7 @@ consul-web   LoadBalancer   172.30.13.122   <pending>     443:32082/TCP   5m
 
 这问题跟[Alibaba Cloud Provider](https://yq.aliyun.com/articles/626066)这个组件有关,`cloud-controller-manager`有3个组件,他们需要内部选主,可能哪里出错了,当时我把其中一个出问题的`pod`删了,就好了.
 
-### 6.8.3 清理Statefulset动态PVC
+### 6.99.3 清理Statefulset动态PVC
 
 目前阿里云`Statefulset`动态PVC用的是nas。
 
@@ -413,7 +422,7 @@ consul-web   LoadBalancer   172.30.13.122   <pending>     443:32082/TCP   5m
 1. 删除PVC
 1. 把nas挂载到任意一台服务器上面，然后删除pvc对应nas的目录。
 
-### 6.8.4 升级到v1.12.6-aliyun.1之后节点可分配内存变少
+### 6.99.4 升级到v1.12.6-aliyun.1之后节点可分配内存变少
 
 该版本每个节点保留了1Gi,相当于整个集群少了N GB(N为节点数)供Pod分配.
 
@@ -425,7 +434,7 @@ consul-web   LoadBalancer   172.30.13.122   <pending>     443:32082/TCP   5m
 Server Version: version.Info{Major:"1", Minor:"12+", GitVersion:"v1.12.6-aliyun.1", GitCommit:"8cb561c", GitTreeState:"", BuildDate:"2019-04-22T11:34:20Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-### 6.8.5 新加节点出现NetworkUnavailable
+### 6.99.5 新加节点出现NetworkUnavailable
 
 RouteController failed to create a route
 
@@ -437,7 +446,7 @@ timed out waiting for the condition -> WaitCreate: ceate route for table vtb-wz9
 
 出现这个问题是因为达到了[VPC的自定义路由条目限制](https://help.aliyun.com/document_detail/27750.html),默认是48,需要提高`vpc_quota_route_entrys_num`的配额
 
-### 6.8.6 访问LoadBalancer svc随机出现流量转发异常
+### 6.99.6 访问LoadBalancer svc随机出现流量转发异常
 
 见
 [[bug]阿里云kubernetes版不检查loadbalancer service port,导致流量被异常转发](https://github.com/kubernetes/cloud-provider-alibaba-cloud/issues/57)
@@ -447,14 +456,14 @@ timed out waiting for the condition -> WaitCreate: ceate route for table vtb-wz9
 > 复用同一个SLB的多个Service不能有相同的前端监听端口，否则会造成端口冲突。
 
 
-### 6.8.7 控制台显示的节点内存使用率总是偏大
+### 6.99.7 控制台显示的节点内存使用率总是偏大
 
 [Docker容器内存监控](https://xuxinkun.github.io/2016/05/16/memory-monitor-with-cgroup/)
 
 原因在于他们控制台用的是usage_in_bytes(cache+buffer),所以会比云监控看到的数字大
 
 
-### 6.8.8 Ingress Controller 玄学优化
+### 6.99.8 Ingress Controller 玄学优化
 
 修改 kube-system 下面名为 nginx-configuration 的configmap
 
@@ -486,7 +495,7 @@ data:
   ......
 ```
 
-### 6.8.9 pid 问题
+### 6.99.9 pid 问题
 
 ```
 Message: **Liveness probe failed: rpc error: code = 2 desc = oci runtime error: exec failed: container_linux.go:262: starting container process caused "process_linux.go:86: adding pid 30968 to cgroups caused \"failed to write 30968 to cgroup.procs: write /sys/fs/cgroup/cpu,cpuacct/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe4cc065_cc58_11e9_bf64_00163e08cd06.slice/docker-0447a362d2cf4719ae2a4f5ad0f96f702aacf8ee38d1c73b445ce41bdaa8d24a.scope/cgroup.procs: invalid argument\""
@@ -499,7 +508,7 @@ Message: **Liveness probe failed: rpc error: code = 2 desc = oci runtime error: 
 1. 手动维护节点,升级到5.x的内核(目前已有一些节点升级到5.x,但是docker版本还是 17.6.2 ,持续观察中~)
 1. 安装 [NPD](https://github.com/AliyunContainerService/node-problem-detector) + [eventer](https://github.com/AliyunContainerService/kube-eventer) ,利用事件机制提醒管理员手动维护
 
-### 6.8.10 OSS PVC FailedMount
+### 6.99.10 OSS PVC FailedMount
 
 可以通过PV制定access key,access secret +PVC的方式使用OSS.某天某个deploy遇到 FailedMount 的问题,联系到阿里云的开发工程师,说是 flexvolume 在初次运行的节点上面运行会有问题,要让他"重新注册"
 
