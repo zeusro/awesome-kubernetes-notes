@@ -385,6 +385,10 @@ HPA Controller中有一个tolerance（容忍力）的概念，它允许一定范
 1. kube-controller-manager.yaml
 1. kube-scheduler.yaml
 
+master 节点会自动监视这个目录里面文件的变化，视情况自动重启。
+
+所以修改 `api server` 的设置只需要修改`kube-apiserver.yaml`,保存退出，相应的容器就会重启。同理，如果你改错了配置，`api server` 就会启动失败，修改之前务必仔细看清楚[文档](https://kubernetes.io/zh/docs/concepts/overview/kubernetes-api/)
+
 ## 6.99 阿里云Kubernetes问题
 
 ### 6.99.1 修改默认ingress
