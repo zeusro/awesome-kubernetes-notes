@@ -524,6 +524,13 @@ Message: **Liveness probe failed: rpc error: code = 2 desc = oci runtime error: 
 touch /usr/libexec/kubernetes/kubelet-plugins/volume/exec/alicloud~oss/debug
 ```
 
+### 6.99.11 请为VPC配置NAT网关
+
+阿里云 kubernetes 节点初始化的时候需要网络用于部署,如果购买的都是纯内网机器,创建集群就会失败.
+
+解决方案:在VPC里面创建NAT网关,实现SNAT,具体的看文档.建议买按流量计费的EIP,速度有100Mbps
+
+
 参考(应用调度相关):
 1. [Kubernetes之健康检查与服务依赖处理](http://dockone.io/article/2587)
 2. [kubernetes如何解决服务依赖呢？](https://ieevee.com/tech/2017/04/23/k8s-svc-dependency.html)
