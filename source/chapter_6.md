@@ -249,6 +249,28 @@ command terminated with exit code 126
 
 在不改变代码的情况下,最优解是增加副本数,并且加上hpa,实现动态伸缩容.
 
+还有一种可能就是节点上某个容器创建的线程数过多，超过了`/proc/sys/kernel/threads-max`的限制。
+
+这个时候无法 fock 进程了，要先修改最大进程数，然后重启。
+
+```bash
+ulimit -a
+echo 100000 > /proc/sys/kernel/threads-max
+reboot
+```
+
+之后再找到罪魁祸首
+
+```bash
+ps -efT
+# 按进程数倒序显示前10条
+ps axo nlwp,pid,cmd | sort -rn | head -10
+```
+
+参考
+1. [LINUX中查看进程的多线程](http://smilejay.com/2012/06/linux_view_threads/)
+1. [](https://mccxj.github.io/blog/20171230_os-thread-limit.html)
+
 ### 6.2.8 DNS 效率低下
 
 容器内打开nscd(域名缓存服务)，可大幅提升解析性能
