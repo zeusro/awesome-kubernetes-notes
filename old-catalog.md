@@ -12,7 +12,7 @@
   - 2.3 网络模型
   - 2.4 kube-proxy
   - 2.5 etcd
-  - 2.6 flanel
+  - 2.6 flannel
 * ## [三 集群部署](https://zeusro-awesome-kubernetes-notes.readthedocs.io/zh_CN/latest/awesome-kubernetes-notes.html#id8)
   - 3.1 部署前准备
   - 3.2 部署 Master
