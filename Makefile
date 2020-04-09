@@ -36,7 +36,8 @@ docker: help
 submodule_commit:
 	cd "$(BUILDDIR)/html" && make
 
-auto_commit:   
+auto_commit: 
+	git pull
 	git add .
 	git commit -am "$(now)"
 	git push
