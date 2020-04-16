@@ -1614,14 +1614,14 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
            items:                                           # 定义 configMap 数据到文件的映射，如果不定义则使用 configMap 中的键为文件名称，值为文件内容
              - key: vhost                                   # 使用 configMap 哪个键
                path: www.conf                               # 将 configMap 中的数据，映射为容器内哪个文件名称
-               mode: 644                                    # 指明文件的权限
+               mode: 0644                                    # 指明文件的权限
        - name: nginx-page
          configMap:
            name: nginx-config-volumes
            items:
              - key: index
                path: index.html
-               mode: 644
+               mode: 0644
 
 -  启动后进入容器查看文件是否正常挂载
 
@@ -1781,10 +1781,10 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
            items:                                           # 定义 secret 数据到文件的映射，如果不定义则使用 secret 中的键为文件名称，值为文件内容
              - key: tls.key                                 # 使用 secret 哪个键
                path: www.conf                               # 将 secret 中的数据，映射为容器内哪个文件名称
-               mode: 644                                    # 指明文件的权限
+               mode: 0644                                    # 指明文件的权限
              - key: tls.crt
                path: index.html
-               mode: 644
+               mode: 0644
 
 十二 StatefulSet 控制器
 =======================
