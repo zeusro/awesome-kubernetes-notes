@@ -77,7 +77,6 @@ https://cr.console.aliyun.com/
 
 ### 视频
 
-* [马哥(docker容器技术+k8s集群技术)](https://www.bilibili.com/video/av35847195/?p=16&t=3931)
 * [微服务容器化实战](https://www.acfun.cn/v/ac10232871)
 
 ### 其他文档
