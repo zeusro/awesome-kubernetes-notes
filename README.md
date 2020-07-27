@@ -95,7 +95,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-a
 
 点击链接加入群聊【Kubernetes&Docker技术交流】（为了防机器人加了点付费模式）：https://jq.qq.com/?_wv=1027&k=27PyHReU
 
-![](source/images/readme/qrcode_1595817926180.jpg)
+<img src="source/images/readme/qrcode_1595817926180.jpg" alt="QQ群" width='30%' height='30%'/>
 
 ### 阿里云官方 kubernetes 千人钉钉群
 
