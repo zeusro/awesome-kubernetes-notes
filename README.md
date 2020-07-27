@@ -62,25 +62,15 @@ https://kubernetes.io/docs/reference/
 
 #### [官方源](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL)
 
-
 #### [Azure加速](http://mirror.azure.cn/help/gcr-proxy-cache.html)
 
-需要注意的是，
-
-
-azure中国:
-
-```bash
-docker pull gcr.azk8s.cn/google_containers/kube-apiserver-amd6:v1.15.0-alpha.0
-```
-
-#### 阿里云(不是很全,有些没有):
+#### 阿里云(不是很全,有些没有)
 
 ```bash
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd6:v1.15.0-alpha.0 
 ```
 
-拉取下来后用docker tag改名即可
+拉取下来后用`docker tag`改名即可
 
 需要说明的是,阿里云加速器只对 `hub.docker.com` 加速,套娃镜像得用海外机器搬运,或者使用阿里云的免费海外机器构建镜像服务。
 地址为[容器镜像服务](https://cr.console.aliyun.com/)
