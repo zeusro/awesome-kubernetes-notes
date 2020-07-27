@@ -26,16 +26,25 @@
 
 ### 建议学习路线
 
-1. [docker](https://yeasy.gitbooks.io/docker_practice/introduction/what.html)
-理解docker快速分发,分层镜像,环境隔离,端口/目录映射,网络模式等重要特性.
-2. [docker-compose/swam](https://docs.docker.com/compose/)
-  建议日常使用docker-compose替代docker命令启动镜像
-  
-  swarm可忽略
-3. kubernetes
-理解基础概念后,通过minikube/kubeadm(配置建议4核8G以上)搭建集群,最后应用于生产中.生产环境一般使用3 master+N worker部署.
+#### [docker](https://yeasy.gitbooks.io/docker_practice/introduction/what.html)
 
-### 官方文档(不要选中文):
+理解docker快速分发,分层镜像,环境隔离,端口/目录映射,网络模式等重要特性.
+
+#### [docker-compose/swam](https://docs.docker.com/compose/)
+
+建议日常使用docker-compose替代docker命令启动镜像
+  
+#### swarm
+
+swarm已是弃子，可忽略
+
+#### kubernetes
+
+理解基础概念后，通过minikube/kubeadm(配置建议4核8G以上)搭建集群，最后应用于生产中。生产环境一般使用3 master+N worker部署。
+
+如果觉得自己部署很麻烦，可以试试阿里云的kubernetes托管版。master节点由阿里云负责运维。
+
+### 官方文档(不要选中文)
 
 https://kubernetes.io/docs/concepts/
 
@@ -43,7 +52,7 @@ API Reference(配置资源时用到):
 
 https://kubernetes.io/docs/reference/
 
-不同版本配置有一些细微差别,自己酌情
+不同版本配置有一些细微差别，自己酌情
 
 [kubectl旧版指南](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 
@@ -51,10 +60,13 @@ https://kubernetes.io/docs/reference/
 
 ### kubernetes 相关镜像
 
-官方:
-https://console.cloud.google.com/gcr/images/google-containers/GLOBAL
+#### [官方源](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL)
 
-http://mirror.azure.cn/help/gcr-proxy-cache.html
+
+#### [Azure加速](http://mirror.azure.cn/help/gcr-proxy-cache.html)
+
+需要注意的是，
+
 
 azure中国:
 
@@ -62,7 +74,7 @@ azure中国:
 docker pull gcr.azk8s.cn/google_containers/kube-apiserver-amd6:v1.15.0-alpha.0
 ```
 
-阿里云(不是很全,有些没有):
+#### 阿里云(不是很全,有些没有):
 
 ```bash
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd6:v1.15.0-alpha.0 
@@ -70,14 +82,8 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-a
 
 拉取下来后用docker tag改名即可
 
-需要说明的是,阿里云加速器只对 `hub.docker.com` 加速,套娃镜像得用海外机器搬运,或者使用阿里云的免费海外机器构建镜像服务
-
-https://cr.console.aliyun.com/
-
-
-### 视频
-
-* [微服务容器化实战](https://www.acfun.cn/v/ac10232871)
+需要说明的是,阿里云加速器只对 `hub.docker.com` 加速,套娃镜像得用海外机器搬运,或者使用阿里云的免费海外机器构建镜像服务。
+地址为[容器镜像服务](https://cr.console.aliyun.com/)
 
 ### 其他文档
 
@@ -93,6 +99,19 @@ https://cr.console.aliyun.com/
 * [云原生之路](https://jimmysong.io/kubernetes-handbook/cloud-native/from-kubernetes-to-cloud-native.html)
 * [CNCF Cloud Native Interactive Landscape](https://landscape.cncf.io/)
 
+## 学习社群
+
+### qq群
+
+点击链接加入群聊【Kubernetes&Docker技术交流】（为了防机器人加了点付费模式）：https://jq.qq.com/?_wv=1027&k=27PyHReU
+
+![](source/images/readme/qrcode_1595817926180.jpg)
+
+### 阿里云官方 kubernetes 千人钉钉群
+
+![](source/images/readme/aliyun-kubernetes.png)
+
+常见问题，@K8s答疑 就能收获答案。
 
 ## TODO
 
@@ -100,6 +119,6 @@ https://cr.console.aliyun.com/
 - [ ] CI/CD的DevOPS相关
 - [ ] 完善 Kubernetes 生态系统
 
-如果此笔记对您有任何帮助，欢迎打钱🎉
+如果此笔记对你没有帮助，欢迎打钱🎉
 
-![](source/zeusro.jpg)
+![](source/images/readme/zeusro.jpg)
