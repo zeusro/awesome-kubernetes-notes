@@ -39,7 +39,7 @@
 7.1.2 清单示例
 ~~~~~~~~~~~~~~
 
-.. code:: yaml
+
 
    apiVersion: apps/v1
    kind: ReplicaSet
@@ -139,7 +139,7 @@ Deployment 在滚动更新时候，通过控制多个 ReplicaSet 来实现，Rep
 7.2.2 清单示例
 ~~~~~~~~~~~~~~
 
-.. code:: yaml
+
 
    apiVersion: apps/v1
    kind: Deployment
@@ -280,7 +280,7 @@ Deployment 在滚动更新时候，通过控制多个 ReplicaSet 来实现，Rep
 7.3.2 清单示例
 ~~~~~~~~~~~~~~
 
-.. code:: yaml
+
 
    apiVersion: apps/v1
    kind: Deployment

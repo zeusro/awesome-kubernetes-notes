@@ -28,7 +28,7 @@
 
 -  清单格式，详见：kubectl explain pods.spec.containers.resources
 
-.. code:: yaml
+
 
    resources      <Object>               # 资源限制
      limits       <map[string]string>    # 资源最高限制
@@ -41,7 +41,7 @@
 -  清单示例，node 节点的 CPU 为 12 核心，cpu limits 设置为 1000m
    也就是允许
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -75,7 +75,7 @@
 
 -  查看结果
 
-.. code:: yaml
+
 
    Mem: 855392K used, 139916K free, 10188K shrd, 796K buff, 350368K cached
    CPU0:   0% usr   0% sys   0% nic  99% idle   0% io   0% irq   0% sirq

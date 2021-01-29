@@ -245,7 +245,7 @@ Calico 目前不支持工作在 iptables 下的 kube-proxy，下面介绍 canal
 
 -  清单格式，详见：kubectl explain networkpolicy
 
-.. code:: yaml
+
 
    egress                  <[]Object>    # 出站规则的对象列表
      ports                 <[]Object>    # 目标端口的对象列表
@@ -282,7 +282,7 @@ Calico 目前不支持工作在 iptables 下的 kube-proxy，下面介绍 canal
 
 -  在两个命名空间分别创建一个 POD
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -315,7 +315,7 @@ Calico 目前不支持工作在 iptables 下的 kube-proxy，下面介绍 canal
 
 -  拒绝所有 dev 空间的报文
 
-.. code:: yaml
+
 
    apiVersion: networking.k8s.io/v1
    kind: NetworkPolicy
@@ -364,7 +364,7 @@ Calico 目前不支持工作在 iptables 下的 kube-proxy，下面介绍 canal
 
 -  允许指定网段的 POD 访问本 POD 的 80 端口
 
-.. code:: yaml
+
 
    apiVersion: networking.k8s.io/v1
    kind: NetworkPolicy
@@ -398,7 +398,7 @@ Calico 目前不支持工作在 iptables 下的 kube-proxy，下面介绍 canal
 
 -  拒绝出栈的所有请求
 
-.. code:: yaml
+
 
    apiVersion: networking.k8s.io/v1
    kind: NetworkPolicy

@@ -97,7 +97,7 @@ node 节点挂掉，那么数据有可能丢失，如果 POD
 
 -  示例
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -145,7 +145,7 @@ node 节点挂掉，那么数据有可能丢失，如果 POD
 
 -  使用示例
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -184,7 +184,7 @@ node 节点挂掉，那么数据有可能丢失，如果 POD
 
 -  使用示例
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -262,7 +262,7 @@ nfs 服务器是存在于集群之外的服务器，它不受 node 节点的影�
 
 -  使用示例
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -331,7 +331,7 @@ Pod 销毁时对 PV 没有影响。
 -  将 nfs 在 k8s 中定义为 PersistentVolume，详见：kubectl explain
    PersistentVolume.spec.nfs
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: PersistentVolume
@@ -416,7 +416,7 @@ Pod 销毁时对 PV 没有影响。
 -  在 volumes 中使用 PVC，kubectl explain
    pods.spec.volumes.persistentVolumeClaim
 
-.. code:: yaml
+
 
    persistentVolumeClaim
        claimName    <string>  # 在当前名称空间已经创建号的 PVC 名称
@@ -425,7 +425,7 @@ Pod 销毁时对 PV 没有影响。
 -  定义 PersistentVolumeClaim，详见：kubectl explain
    PersistentVolumeClaim.spec
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: PersistentVolumeClaim
@@ -442,7 +442,7 @@ Pod 销毁时对 PV 没有影响。
 -  在 pod 清单中定义 persistentVolumeClaim 类型的 volumes
    ，并在容器中挂载 volumeMounts。
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -518,11 +518,11 @@ PV，要求存储设备必须支持 RESTfull 风格的接口。
 
 -  创建 CephX 验证 secret
 
-.. code:: yaml
+
 
    https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd/examples       # rbd-provisioner 使用 ceph rbd 的示例
 
-.. code:: yaml
+
 
    ---
    apiVersion: v1
@@ -549,7 +549,7 @@ PV，要求存储设备必须支持 RESTfull 风格的接口。
 
 -  创建 StorageClass 指向 rbd-provisioner，
 
-.. code:: yaml
+
 
    ---
    kind: StorageClass
@@ -573,7 +573,7 @@ PV，要求存储设备必须支持 RESTfull 风格的接口。
 
 -  创建 PersistentVolumeClaim
 
-.. code:: yaml
+
 
    ---
    kind: PersistentVolumeClaim
@@ -590,7 +590,7 @@ PV，要求存储设备必须支持 RESTfull 风格的接口。
 
 -  在 POD 中使用 PVC，最后在容器中挂载 PVC。
 
-.. code:: yaml
+
 
    ---
    apiVersion: v1

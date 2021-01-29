@@ -65,7 +65,7 @@ RBAC 中，用户授权就是授权某个角色。
 
 -  使用清单方式定义
 
-.. code:: yaml
+
 
    apiVersion: rbac.authorization.k8s.io/v1
    kind: Role
@@ -93,7 +93,7 @@ RBAC 中，用户授权就是授权某个角色。
 
 -  使用清单方式定义
 
-.. code:: yaml
+
 
    apiVersion: rbac.authorization.k8s.io/v1
    kind: RoleBinding
@@ -182,7 +182,7 @@ RBAC 中，用户授权就是授权某个角色。
 
 -  清单定义
 
-.. code:: yaml
+
 
    apiVersion: rbac.authorization.k8s.io/v1beta1
    kind: ClusterRoleBinding

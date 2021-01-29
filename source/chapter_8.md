@@ -54,7 +54,7 @@ SVC_NAME.NS_NAME.DOMAIN.LTD
 8.6 ClusterIP 类型的 service
 ----------------------------
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Service
@@ -328,7 +328,7 @@ clusterIP，再由 clusterIP 进行负载均衡至 POD。
 
 -  清单示例
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Service

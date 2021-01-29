@@ -238,7 +238,7 @@ helm
 22.6 Storage Class
 ------------------
 
-.. code:: yaml
+
 
    ---
    apiVersion: v1
@@ -295,7 +295,7 @@ helm
 
 -  编辑 values.yaml，修改 storageClass 指向上面创建的 storageClass
 
-.. code:: yaml
+
 
    storageClass: "ceph-rbd"
 
@@ -435,7 +435,7 @@ helm
 -  修改对污点的容忍程度，使其容忍 Master 节点的污点，也运行在 Master
    节点上收集信息
 
-.. code:: yaml
+
 
    tolerations: 
      - key: node-role.kubernetes.io/master
@@ -444,7 +444,7 @@ helm
 
 -  如果使用 prometheus 监控应该打开 prometheusRole 规则
 
-.. code:: yaml
+
 
    podAnnotations:
      prometheus.io/scrape: "true"
@@ -542,7 +542,7 @@ helm
 
 -  修改 service 的工作模式，使得可以从集群外部访问
 
-.. code:: yaml
+
 
    service:
      type: NodePort

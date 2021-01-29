@@ -11,7 +11,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 -  可用资源清单配置的对象
 
-.. code:: bash
+
 
    workload：Pod、ReplicaSet、Deployment、StatefulSet、DaemonSet、Job、CronJob
    服务发现及均衡：Service、Ingress
@@ -28,7 +28,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 -  配置清单组成部分，大部分资源使用配置清单方式来创建
 
-.. code:: bash
+
 
    apiVersion
        # 以 "group/version" 形式指明，这个对象属于哪个 API 组（版本）
@@ -46,7 +46,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 -  获取全部的 api 版本
 
-.. code:: bash
+
 
    kubectl api-versions
 
@@ -54,7 +54,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 从内容可以看到一些缩写，方便我们日常命令后简写
 
-.. code:: bash
+
 
    kubectl api-resources
 
@@ -70,7 +70,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 -  查看 k8s 某个内置对象的配置清单格式，应该包含哪些字段，使用 .
    来显示字段的格式帮助信息
 
-.. code:: bash
+
 
    kubectl explain pods
    kubectl explain pods.metadata
@@ -80,7 +80,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 -  定义一个资源清单
 
-.. code:: bash
+
 
    apiVersion: v1
    kind: Pod
@@ -108,7 +108,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
    来测试性执行一个指令，它两个结合起来，就可以通过命令创建，且生成 yaml
    格式配置文件了 -o yaml –dry-run
 
-.. code:: bash
+
 
    kubectl create secret docker-registry regsecret --docker-server=registry-vpc.cn-hangzhou.aliyuncs.com --docker-username=admin --docker-password=123456 --docker-email=420123641@qq.com -o yaml --dry-run
 
@@ -118,7 +118,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 -  创建资源清单中的资源，这样创建的为裸 POD
    ，没有控制器管理，所以删除后不会自动重建，成为自主式 POD
 
-.. code:: bash
+
 
    kubectl create -f pod-demo.yaml
 
@@ -127,7 +127,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 -  删除资源清单中定义的 POD
 
-.. code:: bash
+
 
    kubectl delete -f pod-demo.yaml
 
@@ -136,7 +136,7 @@ apiserver 仅接收 json 格式的资源定义，yaml
 
 apply 可以执行多次，如果发现文件不同，则更新
 
-.. code:: bash
+
 
    kubectl apply -f pod-demo.yaml
 
@@ -147,7 +147,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 
 -  labels 定义标签，键值对组成的标签
 
-.. code:: bash
+
 
      labels:
        app: myapp
@@ -160,7 +160,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 -  在使用资源清单定义 pod 时候，使用 nodeName 可以直接绑定资源对象在哪个
    POD 运行的节点
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -182,7 +182,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 -  在使用资源清单定义 pod 时候，使用 nodeSelector
    （节点标签选择器）字段，来定义节点的倾向性
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -204,7 +204,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 -  从文件启动 pod，观察 pod 运行的节点，会发现已经运行在有标签的 node
    节点上了
 
-.. code:: bash
+
 
    kubectl create -f pod-demo.yaml
 
@@ -212,7 +212,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 
    kubectl get pods -o wide
 
-.. code:: bash
+
 
    NAME       READY   STATUS    RESTARTS   AGE   IP            NODE    NOMINATED NODE   READINESS GATES
    pod-demo   1/1     Running   0          21s   10.244.2.29   node3   <none>           <none>
@@ -226,11 +226,11 @@ OnFailure：只有其状态为错误的时候才去重启它
 
 Never：从来不重启，挂了就挂了
 
-.. code:: bash
+
 
    一旦某个 POD 被调度到某个节点上，只要这个节点在，那么它就不会被重新调度，只能被重启，除非 POD 被删除才会被重新调度，或者 node 挂了，才会被重新调度，否则只要 node 在，那么 POD 就不会被重新调度，如果 POD 启动失败，那么将不断的重启 POD。
 
-.. code:: bash
+
 
    当需要终止 POD ，k8s 发送 kill -15 信号，让容器平滑的终止，等待 30 秒的宽限期，如果没有终止，那么则发送 kill 信号
 
@@ -279,7 +279,7 @@ workingDir
 
 -  示例型配置
 
-.. code:: bash
+
 
    apiVersion: v1
    kind: Pod
@@ -307,7 +307,7 @@ workingDir
 -  imagePullPolicy
    镜像获取的策略，详见：\ ``kubectl explain pods.spec.containers``
 
-.. code:: bash
+
 
    Always            # 总是从仓库下载
    Never             # 从不下载，本地有就用，没有就失败
@@ -325,7 +325,7 @@ workingDir
 在此处暴露的端口可为系统提供有关容器的网络连接的信息，但主要是信息性的，此处没有指定的端口也不会阻止容器暴露该端口，容器中任何侦听
 0.0.0.0 地址的端口都可以从网络访问
 
-.. code:: yaml
+
 
        ports:                    # 定义两个端口对象一个 http 一个 https
        - name: http              # 定义这个端口的名称，方便别的对象取引用
@@ -335,7 +335,7 @@ workingDir
 
 #### 5.9.2.9 env 传递环境变量
 
-.. code:: yaml
+
 
    在容器中获取 POD 的信息
 
@@ -369,7 +369,7 @@ $$(VAR_NAME)，转义后在容器内使用。
 annotations 与 label
 不同的地方在于，它不能用于挑选资源对象，仅为对象提供元数据，它的长度不受限制
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -391,7 +391,7 @@ annotations 与 label
 
 -  一般状态
 
-.. code:: bash
+
 
    Pending：已经创建但是没有适合运行它的节点，已经调度，但是尚未完成
    Running：运行状态
@@ -416,7 +416,7 @@ POD，如果创建成功或者失败，则将结果发回给 apiserver ，apiser
 -  livenessProbe / readinessProbe 是 k8s
    两个生命周期，这两个生命周期都可以定义探针来探测容器状态做出不同反应
 
-.. code:: bash
+
 
    livenessProbe     # 指示容器是否正在运行。如果存活探测失败，则依据 restartPolicy 策略来进行重启
    readinessProbe    # 指示容器是否准备好服务请求。如果就绪探测失败端点控制器将从与 Pod 匹配的所有 Service 的端点中删除该 Pod 的 IP 地址
@@ -424,13 +424,13 @@ POD，如果创建成功或者失败，则将结果发回给 apiserver ，apiser
 -  livenessProbe / readinessProbe
    可用的探针和探针特性，探针只能定义一种类型，例如：HTTPGetAction
 
-.. code:: bash
+
 
    exec          # 在容器内执行指定命令。如果命令退出时返回码为 0 则认为诊断成功。
    tcpSocket     # 对指定端口上的容器的 IP 地址进行 TCP 检查。如果端口打开，则诊断被认为是成功的。
    httpGet       # HTTP GET 请求指定端口和路径上的容器。如果响应码大于等于200 且小于 400，则诊断被认为是成功的。
 
-.. code:: yaml
+
 
    failureThreshold    # 探测几次才判定为探测失败，默认为 3 次。
    periodSeconds       # 每次探测周期的间隔时长。
@@ -440,7 +440,7 @@ POD，如果创建成功或者失败，则将结果发回给 apiserver ，apiser
 -  使用 exec 探针，实验结果应该为 39 秒后 POD 显示 ERROR ，但不自动重启
    POD
 
-.. code:: bash
+
 
    apiVersion: v1
    kind: Pod
@@ -469,7 +469,7 @@ POD，如果创建成功或者失败，则将结果发回给 apiserver ，apiser
 -  使用 httpGet 探针，实验结果应该大约 40 秒后探测存活性失败，自动重启
    POD，第一次重启会立即进行，随后是 30 秒的2倍直到 300 秒。
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -510,7 +510,7 @@ service 上。
 -  livenessProbe / readinessProbe
    可用的探针和探针特性基本一样，探针只能定义一种类型，例如：HTTPGetAction
 
-.. code:: bash
+
 
    livenessProbe     # 指示容器是否正在运行。如果存活探测失败，则依据 restartPolicy 策略来进行重启
    readinessProbe    # 指示容器是否准备好服务请求。如果就绪探测失败端点控制器将从与 Pod 匹配的所有 Service 的端点中删除该 Pod 的 IP 地址
@@ -518,7 +518,7 @@ service 上。
 -  使用 httpGet 探针，实验结果应该大约 40 秒后探测存活性失败，自动重启
    POD，第一次重启会立即进行，随后是 30 秒的2倍直到 300 秒。
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -550,7 +550,7 @@ service 上。
 
 -  手动进入容器，删除 index.html 以触发就绪性探针的检测
 
-.. code:: bash
+
 
    kubectl exec -it httpgetread -- /bin/sh
    $ rm -f /usr/share/nginx/html/index.html
@@ -558,7 +558,7 @@ service 上。
 -  结果这个 POD 的 READY 状态已经变成非就绪了，此时 service
    不会再调度到这个节点了
 
-.. code:: bash
+
 
    [root@node1 ~]# kubectl get pods -w
    NAME                            READY   STATUS    RESTARTS   AGE
@@ -566,7 +566,7 @@ service 上。
 
 -  在容器内再创建一个文件，以触发就绪性探针的检测
 
-.. code:: bash
+
 
    kubectl exec -it httpgetread -- /bin/sh
    $ echo "hello worlld" >>/usr/share/nginx/html/index.html
@@ -574,7 +574,7 @@ service 上。
 -  结果这个 POD 的的 READY 状态已经编程就绪了，此时 service
    会调度到这个节点了
 
-.. code:: bash
+
 
    [root@node1 ~]# kubectl get pods -w
    NAME                            READY   STATUS    RESTARTS   AGE
@@ -584,14 +584,14 @@ service 上。
 
    详见：kubectl explain pods.spec.containers.lifecycle
 
-.. code:: bash
+
 
    postStart           # 在容器启动后立即执行的命令，如果这个操作失败了，那么容器会终止，且根据 restartPolicy 来决定是否重启
    preStop             # 在容器终止前立即执行的命令
 
 -  postStart / preStop 的基本使用
 
-.. code:: bash
+
 
    apiVersion: v1
    kind: Pod

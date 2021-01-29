@@ -304,7 +304,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
 -  创建自定义的 serviceaccount 对象，在 serviceaccount 对象上定义 image
    pull secrets
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: ServiceAccount
@@ -316,7 +316,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
 
 -  创建 POD 使用指定的 serviceaccount 对象
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod

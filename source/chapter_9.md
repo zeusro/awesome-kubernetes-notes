@@ -68,7 +68,7 @@ Envoy 软件。
 
 -  后端 service 和 pods
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Service
@@ -125,7 +125,7 @@ Envoy 软件。
    service 后主机发生变动的时候，反应在 ingress-nginx
    这个容器的配置文件中
 
-.. code:: yaml
+
 
    apiVersion: extensions/v1beta1
    kind: Ingress
@@ -162,7 +162,7 @@ Envoy 软件。
 
 -  后端 service 和 pods
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Service
@@ -228,7 +228,7 @@ Envoy 软件。
    关联，从而在 service 后主机发生变动的时候，反应在 ingress-tomcat
    这个容器的配置文件中
 
-.. code:: yaml
+
 
    apiVersion: extensions/v1beta1
    kind: Ingress

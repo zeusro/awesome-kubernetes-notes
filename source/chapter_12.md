@@ -30,7 +30,7 @@ StatefulSet 控制器依赖于一个事先存在的 headless Service 对象实�
 12.1 清单格式
 -------------
 
-.. code:: yaml
+
 
    podManagementPolicy    <string>      # 控制扩展时候的顺序策略
    replicas               <integer>     # 模板运行的副本数
@@ -163,7 +163,7 @@ POD 的名称即可。
 12.3 创建 statefulSet
 ---------------------
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Service

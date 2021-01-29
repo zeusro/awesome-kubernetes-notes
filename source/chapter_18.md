@@ -12,7 +12,7 @@
 -  使用 nodeselector 来将预选范围缩小，没有被 nodeselector
    选中的节点将被预选阶段淘汰
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -75,7 +75,7 @@
 
 -  示例配置
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -155,7 +155,7 @@ POD 和 POD 出于高效的通信这种需求，所以需要将 POD 和 POD
 -  POD 对其他 POD 的亲和性，详见：kubectl explain
    pods.spec.affinity.podAffinity
 
-.. code:: yaml
+
 
    podAffinity                <Object>                              # POD 对其他 POD 的亲和性
      preferredDuringSchedulingIgnoredDuringExecution  <[]Object>    # 软性亲和性，尽量满足亲和性
@@ -181,7 +181,7 @@ POD 和 POD 出于高效的通信这种需求，所以需要将 POD 和 POD
 
 -  示例配置
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -239,7 +239,7 @@ POD 和 POD 出于高效的通信这种需求，所以需要将 POD 和 POD
 -  POD 对其他 POD 的反亲和性，详见：kubectl explain
    pods.spec.affinity.podAntiAffinity
 
-.. code:: yaml
+
 
    podAntiAffinity              <Object>                            # POD 对其他 POD 的反亲和性
      preferredDuringSchedulingIgnoredDuringExecution  <[]Object>    # 软性反亲和性，尽量满足亲和性
@@ -265,7 +265,7 @@ POD 和 POD 出于高效的通信这种需求，所以需要将 POD 和 POD
 
 -  配置清单
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -323,7 +323,7 @@ POD 可以容忍的污点列表。
 
 -  node 污点清单格式，详见：kubectl explain node.spec.taints
 
-.. code:: yaml
+
 
    taints          <[]Object>     # 污点对象列表
      effect        <string>       # 当 POD 不能容忍这个污点的时候，要采取的行为，也就是排斥不容忍污点的 POD
@@ -348,7 +348,7 @@ POD 可以容忍的污点列表。
 
 -  测试清单
 
-.. code:: yaml
+
 
    apiVersion: apps/v1
    kind: Deployment
@@ -377,7 +377,7 @@ POD 可以容忍的污点列表。
 -  查看结果，kubectl get pods -o wide，因为 POD 没有定义容忍 node2
    的污点
 
-.. code:: yaml
+
 
    NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE    NOMINATED NODE   READINESS GATES
    myapp-deploy-675558bfc5-4x5cf   1/1     Running   0          9s    10.244.2.13   node3   <none>           <none>
@@ -407,7 +407,7 @@ POD 可以容忍的污点列表。
 
 -  POD 容忍度，详见：kubectl explain pods.spec.tolerations
 
-.. code:: yaml
+
 
    tolerations            <[]Object>    # 容忍度对象
      effect               <string>      # 能否容忍 node 上的污点驱逐策略，为空表示容忍任何驱逐策略
@@ -429,7 +429,7 @@ POD 可以容忍的污点列表。
 -  定义 POD 清单文件，容忍 node 上存在 node-type 值为 dev
    的污点、接受被驱逐。
 
-.. code:: yaml
+
 
    apiVersion: apps/v1
    kind: Deployment
@@ -462,7 +462,7 @@ POD 可以容忍的污点列表。
 
 -  查看结果，kubectl get pods -o wide，运行在自己容忍的污点的节点上了
 
-.. code:: yaml
+
 
    NAME                           READY   STATUS    RESTARTS   AGE     IP            NODE    NOMINATED NODE   READINESS GATES
    myapp-deploy-97578cf74-5v2r6   1/1     Running   0          6m22s   10.244.2.16   node3   <none>           <none>

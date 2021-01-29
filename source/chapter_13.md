@@ -83,7 +83,7 @@ user，即使 kubectl 命令行通过读取 config 中的用户而认证到 apis
 
 -  创建 POD 使用指定的 serviceaccount 对象
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Pod
@@ -122,7 +122,7 @@ serviceaccout 也属于标准的 k8s
 
 -  kubectl 配置文件解析，详见：kubectl config view
 
-.. code:: yaml
+
 
    apiVersion: v1
    kind: Config

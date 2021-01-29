@@ -32,9 +32,9 @@
    chapter_19.md
    chapter_20.md
    chapter_21.md
-   chapter_22.rst
-   chapter_23.rst
-   chapter_24.rst   
+   chapter_22.md
+   chapter_23.md
+   chapter_24.md 
    chapter_25.md
    chapter_26.md
 
