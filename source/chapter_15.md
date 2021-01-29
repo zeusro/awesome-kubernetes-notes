@@ -44,9 +44,8 @@
    这个证书的清单定义
 
 
-
+```
    # ------------------- Dashboard Secret ------------------- #
-
    #apiVersion: v1
    #kind: Secret
    #metadata:
@@ -55,8 +54,7 @@
    #  name: kubernetes-dashboard-certs
    #  namespace: kube-system
    #type: Opaque
-
-   #---
+```
 
 -  部署 dashboard 清单
 
