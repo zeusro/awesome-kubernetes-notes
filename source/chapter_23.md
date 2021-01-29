@@ -461,14 +461,14 @@ etcd-0-14配置：
 
 指定某个键的值。例如:
 
-::
+
 
    $ etcdctl set /testdir/testkey "Hello world"
    Hello world
 
 支持的选项包括：
 
-::
+
 
    --ttl '0' 该键值的超时时间(单位为秒)，不配置(默认为0)则永不超时
    --swap-with-value value 若该键现在的值是value，则进行设置操作
@@ -478,21 +478,21 @@ etcd-0-14配置：
 
 如果给定的键不存在，则创建一个新的键值。例如:
 
-::
+
 
    $ etcdctl mk /testdir/testkey "Hello world"
    Hello world
 
 当键存在的时候，执行该命令会报错，例如:
 
-::
+
 
    $ etcdctl mk /testdir/testkey "Hello world"
    Error:  105: Key already exists (/testdir/testkey) [8]
 
 支持的选项为:
 
-::
+
 
    --ttl '0'  超时时间(单位为秒），不配置(默认为 0)。则永不超时
 
@@ -500,20 +500,20 @@ etcd-0-14配置：
 
 如果给定的键目录不存在，则创建一个新的键目录。例如：
 
-::
+
 
    $ etcdctl mkdir testdir2
 
 当键目录存在的时候，执行该命令会报错，例如：
 
-::
+
 
    $ etcdctl mkdir testdir2
    Error:  105: Key already exists (/testdir2) [9]
 
 支持的选项为：
 
-::
+
 
    --ttl '0' 超时时间(单位为秒)，不配置(默认为0)则永不超时。
 
@@ -521,13 +521,13 @@ etcd-0-14配置：
 
 创建一个键目录。如果目录不存在就创建，如果目录存在更新目录TTL。
 
-::
+
 
    $ etcdctl setdir testdir3
 
 支持的选项为:
 
-::
+
 
    --ttl '0' 超时时间(单位为秒)，不配置(默认为0)则永不超时。
 
@@ -538,21 +538,21 @@ etcd-0-14配置：
 
 删除某个键值。例如:
 
-::
+
 
    $ etcdctl rm /testdir/testkey
    PrevNode.Value: Hello
 
 当键不存在时，则会报错。例如:
 
-::
+
 
    $ etcdctl rm /testdir/testkey
    Error:  100: Key not found (/testdir/testkey) [7]
 
 支持的选项为：
 
-::
+
 
    --dir 如果键是个空目录或者键值对则删除
    --recursive 删除目录和所有子键
@@ -563,14 +563,14 @@ etcd-0-14配置：
 
 删除一个空目录，或者键值对。
 
-::
+
 
    $ etcdctl setdir dir1
    $ etcdctl rmdir dir1
 
 若目录不空，会报错:
 
-::
+
 
    $ etcdctl set /dir/testkey hi
    hi
@@ -584,21 +584,21 @@ etcd-0-14配置：
 
 当键存在时，更新值内容。例如：
 
-::
+
 
    $ etcdctl update /testdir/testkey "Hello"
    Hello
 
 当键不存在时，则会报错。例如:
 
-::
+
 
    $ etcdctl update /testdir/testkey2 "Hello"
    Error:  100: Key not found (/testdir/testkey2) [6]
 
 支持的选项为:
 
-::
+
 
    --ttl '0' 超时时间(单位为秒)，不配置(默认为 0)则永不超时。
 
@@ -606,13 +606,13 @@ etcd-0-14配置：
 
 更新一个已经存在的目录。
 
-::
+
 
    $ etcdctl updatedir testdir2
 
 支持的选项为:
 
-::
+
 
    --ttl '0' 超时时间(单位为秒)，不配置(默认为0)则永不超时。
 
@@ -623,21 +623,21 @@ etcd-0-14配置：
 
 获取指定键的值。例如：
 
-::
+
 
    $ etcdctl get /testdir/testkey
    Hello world
 
 当键不存在时，则会报错。例如：
 
-::
+
 
    $ etcdctl get /testdir/testkey2
    Error:  100: Key not found (/testdir/testkey2) [5]
 
 支持的选项为:
 
-::
+
 
    --sort 对结果进行排序
    --consistent 将请求发给主节点，保证获取内容的一致性。
@@ -648,7 +648,7 @@ etcd-0-14配置：
 
 例如：
 
-::
+
 
    $ etcdctl ls
    /testdir
@@ -660,7 +660,7 @@ etcd-0-14配置：
 
 支持的选项包括:
 
-::
+
 
    --sort 将输出结果排序
    --recursive 如果目录下有子目录，则递归输出其中的内容
@@ -674,7 +674,7 @@ etcd-0-14配置：
 
 例如:用户更新testkey键值为Hello watch。
 
-::
+
 
    $ etcdctl get /testdir/testkey
    Hello world
@@ -685,7 +685,7 @@ etcd-0-14配置：
 
 支持的选项包括:
 
-::
+
 
    --forever  一直监测直到用户按CTRL+C退出
    --after-index '0' 在指定index之前一直监测
@@ -697,14 +697,14 @@ etcd-0-14配置：
 
 例如：用户更新testkey键值。
 
-::
+
 
    $ etcdctl exec-watch testdir/testkey -- sh -c 'ls'
    config  Documentation  etcd  etcdctl  README-etcdctl.md  README.md  READMEv2-etcdctl.md
 
 支持的选项包括:
 
-::
+
 
    --after-index '0' 在指定 index 之前一直监测
    --recursive 返回所有的键值和子键值
@@ -713,13 +713,13 @@ etcd-0-14配置：
 
 备份etcd的数据。
 
-::
+
 
    $ etcdctl backup --data-dir /var/lib/etcd  --backup-dir /home/etcd_backup
 
 支持的选项包括:
 
-::
+
 
    --data-dir  etcd的数据目录
    --backup-dir 备份到指定路径
@@ -730,21 +730,21 @@ etcd-0-14配置：
 
 查看集群中存在的节点
 
-::
+
 
    $ etcdctl member list
    8e9e05c52164694d: name=dev-master-01 peerURLs=http://localhost:2380 clientURLs=http://localhost:2379 isLeader=true
 
 删除集群中存在的节点
 
-::
+
 
    $ etcdctl member remove 8e9e05c52164694d
    Removed member 8e9e05c52164694d from cluster
 
 向集群中新加节点
 
-::
+
 
    $ etcdctl member add etcd3 http://192.168.1.100:2380
    Added member named etcd3 with ID 8e9e05c52164694d to cluster
