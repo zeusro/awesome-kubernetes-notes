@@ -1,4 +1,4 @@
-.. kaliarch kubernetes-note documentation master file, created by
+.. Zeusro kubernetes-note documentation master file, created by
    sphinx-quickstart on Tue Nov 26 09:42:24 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.

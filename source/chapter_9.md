@@ -210,13 +210,13 @@ Envoy 软件。
 
 -  制作自签名证书，让 ingress-nginx 带有证书来访问
 
-
-
+```bash
    # 生成 key
    openssl genrsa -out tls.key 2048
 
    # 生成自签证书，CN=域名必须要与自己的域名完全一致
    openssl req -new -x509 -key tls.key -out tls.crt -subj /C=CN/ST=Beijing/L=Beijing/O=DevOps/CN=tomcat.kaliarch.com
+```
 
 -  创建 secret 证书对象，它是标准的 k8s 对象
 

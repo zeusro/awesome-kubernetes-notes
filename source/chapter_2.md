@@ -177,7 +177,7 @@ k8s 有三种网络：POD网络、集群网络、节点网络
 
 所以，接入外部访问时候，请求首先到达 node 网络，然后 node 网络代理至
 service 网络，service 根据 iptables/ipvs 规则来转发到 pod 网络中的 pod
-上。 ~~~ NODE 网络 -> SVC 网络 -> POD 网络 ~~~
+上。 ** NODE 网络 -> SVC 网络 -> POD 网络 **
 
 k8s 有三种通信：
 
@@ -229,9 +229,6 @@ service 网络：由 kube-proxy 负责管控和生成
 
 -   Master
 
-```{=html}
-<!-- -->
-```
     kube-scheduler             # 调度 pod
     kuber-controller-manager   # 管理 pod
     kube-apiserver             # 接收请求
@@ -239,9 +236,6 @@ service 网络：由 kube-proxy 负责管控和生成
 
 -   node
 
-```{=html}
-<!-- -->
-```
     kubelet                    # 节点/pod管理
     kube-proxy                 # watch apiserver管理service
     docker                     # 容器运行时

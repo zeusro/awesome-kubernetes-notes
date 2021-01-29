@@ -47,7 +47,7 @@ language = 'zh_CN'
 
 # General information about the project.
 project = u'Zeusro\'s awesome-kubernetes-notes'
-copyright = u'2020, kaliarch,Zeusro'
+copyright = u'2021, kaliarch,Zeusro'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

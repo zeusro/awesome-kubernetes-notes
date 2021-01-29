@@ -33,10 +33,8 @@
 -  为方便清理指定ns清理evicted/crashloopbackoff的pod/清理exited的容器
 
 
-
+```
    #!/bin/bash
-   # auth:kaliarch
-
    clear_evicted_pod() {
      ns=$1
      kubectl delete pods -n ${ns} $(kubectl get pods -n ${ns} | grep Evicted |awk '{print $1}')
@@ -74,11 +72,12 @@
      echo "input error"
      ;;
    esac
+```
 
 -  清理全部ns中evicted/crashloopbackoff的pod
 
 
-
+```
    # 获取所有ns
    kubectl get ns | grep -v "NAME" |awk '{print $1}'
 
@@ -86,6 +85,7 @@
    for ns in `kubectl get ns | grep -v "NAME" | awk '{print $1}'`;do kubectl delete pods -n ${ns} $(kubectl get pods -n ${ns} | grep "Evicted" |awk '{print $1}');done
    # 清理异常pod
    for ns in `kubectl get ns | grep -v "NAME" | awk '{print $1}'`;do kubectl delete pods -n ${ns} $(kubectl get pods -n ${ns} | grep "CrashLoopBackOff" |awk '{print $1}');done
+```
 
 24.3 Docker 数据迁移
 --------------------
@@ -119,7 +119,6 @@
 查看手动启动的容器网络上走的docker0
 
 ```
-
    root@fd1b8101475d:/# ip a
 
    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
@@ -171,7 +170,7 @@
 
 查看docker启动配置
 
-|image11|
+![image](images/kubesphere/1.jpeg)
 
 修改文件/etc/systemd/system/docker.service.d/docker-options.conf中去掉参数：–iptables=false
 这个参数等于false时会不写iptables
@@ -188,10 +187,11 @@
 
 ⚠️注意：ingress控制deployment在：
 
-|image12|
+![image](images/kubesphere/2.jpeg)
 
 
 
+```
    kind: Ingress
    apiVersion: extensions/v1beta1
    metadata:
@@ -231,6 +231,7 @@
                  serviceName: smartsds-frontend-svc
 
                  servicePort: 80
+```
 
 24.6 Jenkins 的 Agent
 ---------------------
@@ -247,7 +248,9 @@ agent 都是一个Pod，如果要替换内置的agent，就需要替换 agent �
 
 参考链接：\ https://kubesphere.io/docs/advanced-v2.0/zh-CN/devops/devops-admin-faq/#%E5%8D%87%E7%BA%A7-jenkins-agent-%E7%9A%84%E5%8C%85%E7%89%88%E6%9C%AC
 
-|image13| |image14|
+![image](images/kubesphere/3.jpeg)
+
+![image](images/kubesphere/4.jpeg)
 
 在 KubeSphere 修改 jenkins-casc-config 以后，您需要在 Jenkins Dashboard
 系统管理下的 configuration-as-code 页面重新加载您更新过的系统配置。
@@ -256,11 +259,13 @@ agent 都是一个Pod，如果要替换内置的agent，就需要替换 agent �
 
 https://kubesphere.io/docs/advanced-v2.0/zh-CN/devops/jenkins-setting/#%E7%99%BB%E9%99%86-jenkins-%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD
 
-|image15|
+![image](images/kubesphere/5.jpeg)
+
 
 jenkins中更新base镜像
 
-|image16|
+![image](images/kubesphere/6.jpeg)
+
 
 ⚠️先修改kubesphere中jenkins的配置，\ `jenkins-casc-config <http://xxxxxxxxx:30800/system-workspace/projects/kubesphere-devops-system/configmaps/jenkins-casc-config>`__
 
@@ -369,15 +374,6 @@ jenkins中更新base镜像
              构建状态 : ${env.JOB_NAME} jenkins 发布运行正常
              构建URL : ${env.BUILD_URL}"""
 
-|image17|
+![image](images/kubesphere/7.jpeg)
 
-|image18|
-
-.. |image11| image:: images/kubesphere/1.jpeg
-.. |image12| image:: images/kubesphere/2.jpeg
-.. |image13| image:: images/kubesphere/3.jpeg
-.. |image14| image:: images/kubesphere/4.jpeg
-.. |image15| image:: images/kubesphere/5.jpeg
-.. |image16| image:: images/kubesphere/6.jpeg
-.. |image17| image:: images/kubesphere/7.jpeg
-.. |image18| image:: images/kubesphere/8.jpeg
+![image](images/kubesphere/8.jpeg)
