@@ -1,6 +1,6 @@
 
-十一 配置信息容器化
-===================
+# 十一 配置信息容器化
+
 
 k8s 提供了 configMap、secret 这两种特殊类型的存储卷，多数情况下不是为
 POD 提供存储空间，而是为用户提供了从集群外部到 POD
@@ -73,7 +73,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 -  命令行方式创建
 
 
-
+```
    # 创建名为 my-config 的 configMap，它的数据来自目录中的文件，键为文件名，值为文件内容
    kubectl create configmap my-config --from-file=path/to/dir
 
@@ -88,9 +88,9 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 
    # 从env文件中命名 my-config
    kubectl create configmap my-config --from-env-file=path/to/bar.env
+```
 
-11.2.1 注入 POD ENV
-~~~~~~~~~~~~~~~~~~~
+### 11.2.1 注入 POD ENV
 
 -  创建 ConfigMap 并在 POD ENV 中使用
 
@@ -141,8 +141,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
                  key: server_name
 ```
 
-11.2.2 挂载为 POD 卷
-~~~~~~~~~~~~~~~~~~~~
+### 11.2.2 挂载为 POD 卷
 
 -  configMap 中的数据可以在容器内挂载为文件，并且当 configMap
    中的数据发生变动的时候，容器内的文件相应也会发生变动，但不会重载容器内的进程。
@@ -239,8 +238,8 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
    $ curl -H "Host:myapp.kaliarch.com" 10.244.2.104
    <h1>this is a test page<h1>
 
-11.3 secret
------------
+## 11.3 secret
+
 
 configMap 是明文存储数据的，如果需要存储敏感数据，则需要使用 secret
 ，secret 与 configMap 的作用基本一致，且 secret
@@ -265,8 +264,8 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
    stringData  <map[string]string>    # 明文的数据
    type        <string>               # 数据类型
 
-11.3.1 私有仓库认证1
-~~~~~~~~~~~~~~~~~~~~
+### 11.3.1 私有仓库认证1
+
 
 -  首先通过命令行创建出来 secret
 
@@ -296,8 +295,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
       - name: regsecret                        # secret 对象
 ```
 
-11.3.2 私有仓库认证2
-~~~~~~~~~~~~~~~~~~~~
+### 11.3.2 私有仓库认证2
 
 -  首先通过命令行创建出来 secret
 
@@ -337,8 +335,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
              containerPort: 80
      serviceAccountName: admin                          # 使用 serviceaccount 进行拉取镜像的认证，这样更加安全
 
-11.3.3 创建 TLS 证书
-~~~~~~~~~~~~~~~~~~~~
+### 11.3.3 创建 TLS 证书
 
 -  首先通过命令行创建出来
 
