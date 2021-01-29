@@ -1,4 +1,4 @@
-.. contents::
+.. contents
    :depth: 3
 ..
 
@@ -12,14 +12,14 @@
 
 -  CPU
 
-::
+
 
    1 颗 CPU = 1000 millicores
    0.5 颗 CPU = 500 m
 
 -  内存
 
-::
+
 
    Ei、Pi、Ti、Gi、Mi、Ki
 
@@ -101,7 +101,7 @@
 
 -  GuranteedW
 
-::
+
 
    每个容器同时设置了 CPU 和内存的 requests 和 limits，而且
        cpu.limits = cpu.requests
@@ -110,7 +110,7 @@
 
 -  Burstable
 
-::
+
 
    至少有一个容器设置 CPU 或内存资源的 requests 属性
 
@@ -118,7 +118,7 @@
 
 -  BestEffort
 
-::
+
 
    没有任何一个容器设置了 requests 或 limits 属性
 
@@ -126,7 +126,7 @@
 
 -  oom 策略
 
-::
+
 
    最先杀死占用量和需求量的比例大的
 

@@ -120,25 +120,25 @@ node 出现新的污点，那么 POD 可以
 
 4. PodToleratesNodeTaints
 
-::
+
 
    检查节点的污点 nodes.spec.taints 是否是 POD 污点容忍清单中 pods.spec.tolerations 的子集
 
 5. PodToleratesNodeNoExecuteTaints
 
-::
+
 
    检查 pod 是否容忍节点上有 NoExecute 污点。NoExecute 这个污点是啥意思呢。如果一个 pod 上运行在一个没有污点的节点上后，这个节点又给加上污点了，那么 NoExecute 表示这个新加污点的节点会驱逐其上正在运行的 pod；不加 NoExecute 不会驱逐节点上运行的 pod，表示接受既成事实，这是默认策略。
 
 6. CheckNodeLabelPresence（默认没有启用）
 
-::
+
 
    检查节点上指定标签的存在性，如果节点有pod指定的标签，那么这个节点就被选中。
 
 7. CheckServiceAffinity（默认没有启用）
 
-::
+
 
    一个 Service 下可以有多个 POD，比如这些 POD 都运行在 1、2、3 机器上，而没有运行在 4、5、6 机器上，那么CheckServiceAffinity 就表示新加入的 POD 都集中运行在 1、2、3 机器上，这样集中好处是一个 Service 下 POD 之间内部通信的效率变高了。 
 
@@ -150,49 +150,49 @@ node 出现新的污点，那么 POD 可以
 
 9. MaxGCEPDVolumeCount
 
-::
+
 
    确保已挂载的GCE存储卷不超过设置的最大值，默认16
 
 10 MaxAzureDiskVolumeCount
 
-::
+
 
    确保已挂载的Azure存储卷不超过设置的最大值，默认16
 
 11. CheckVolumeBinding
 
-::
+
 
    检查节点上的 PVC 是否被别的 POD 绑定了 
 
 12. NoVolumeZoneConflict
 
-::
+
 
    检查给定的 zone (机房) 限制前提下，检查如果在此主机上部署 POD 是否存在卷冲突
 
 13. CheckNodeMemoryPressure
 
-::
+
 
    检查 node 节点上内存是否存在压力
 
 14. CheckNodeDiskPressure
 
-::
+
 
    检查磁盘 IO 是否压力过大
 
 15. CheckNodePIDPressure
 
-::
+
 
    检查 node 节点上 PID 资源是否存在压力
 
 16. MatchInterPodAffinity
 
-::
+
 
    检查 Pod 是否满足亲和性或者反亲和性
 
@@ -203,61 +203,61 @@ node 出现新的污点，那么 POD 可以
 
 1. least_requested.go
 
-::
+
 
    选择消耗最小的节点（根据空闲比率评估 cpu(总容量-sum(已使用)*10/总容量)）
 
 2. balanced_resource_allocation.go
 
-::
+
 
    均衡资源的使用方式，表示以 cpu 和内存占用率的相近程度作为评估标准，二者占用越接近，得分就越高，得分高的胜出。
 
 3. node_prefer_avoid_pods.go
 
-::
+
 
    看节点是否有注解信息 "scheduler.alpha.kubernetes.io/preferAvoidPods" 。没有这个注解信息，说明这个节点是适合运行这个 POD 的。
 
 4. taint_toleration.go
 
-::
+
 
    将 pods.spec.tolerations 与 nodes.spec.taints 列表项进行匹配度检查，匹配的条目越多，得分越低。
 
 5. selector_spreading.go
 
-::
+
 
    查找当前 POD 对象对应的 service、statefulset、replicatset 等所匹配的标签选择器，在节点上运行的带有这样标签的 POD 越少得分越高，这样的 POD 优选被选出。 这就是说我们要把同一个标签选择器下运行的 POD 散开(spreading)到多个节点上。
 
 6. interpod_affinity_test.go
 
-::
+
 
    遍历 POD 对象亲和性的条目，并将那些能够匹配到节点权重相加，值越大的得分越高，得分高的胜出。
 
 7. most_requested.go
 
-::
+
 
    表示尽可能的把一个节点的资源先用完，这个和 least_requested 相反，二者不能同时使用。
 
 8. node_label.go
 
-::
+
 
    根据节点是否拥有标签，不关心标签是什么，来评估分数。
 
 9. image_locality.go
 
-::
+
 
    表示根据满足当前 POD 对象需求的已有镜的体积大小之和来选择节点的。
 
 10. node_affinity.go
 
-::
+
 
    根据 POD 对象中的 nodeselector，对节点进行匹配度检查，能够成功匹配的数量越多，得分就越高。
 

@@ -53,7 +53,7 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  Chart Install 过程
 
-::
+
 
    1. Helm 从指定的目录或者 TAR 文件中解析出 Chart 结构信息。
    2. Helm 将指定的 Chart 结构和 Values 信息通过 gRPC 传递给 Tiller。
@@ -62,7 +62,7 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  Chart Update 过程
 
-::
+
 
    1. Helm 从指定的目录或者 TAR 文件中解析出 Chart 结构信息。
    2. Helm 将需要更新的 Release 的名称、Chart 结构和 Values 信息传递给 Tiller。
@@ -71,7 +71,7 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  Chart Rollback 过程
 
-::
+
 
    1. Helm 将要回滚的 Release 的名称传递给 Tiller。
    2. Tiller 根据 Release 的名称查找 History。
@@ -80,7 +80,7 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  Chart 处理依赖说明
 
-::
+
 
    Tiller 在处理 Chart 时，直接将 Chart 以及其依赖的所有 Charts 合并为一个 Release，同时传递给 Kubernetes。
    因此 Tiller 并不负责管理依赖之间的启动顺序。Chart 中的应用需要能够自行处理依赖关系。
@@ -92,7 +92,7 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  下载二进制版本，解压并安装 helm
 
-::
+
 
    $ wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
    $ tar xf helm-v2.13.1-linux-amd64.tar.gz

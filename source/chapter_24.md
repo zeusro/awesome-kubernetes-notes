@@ -118,7 +118,7 @@
 
 查看手动启动的容器网络上走的docker0
 
-::
+```
 
    root@fd1b8101475d:/# ip a
 
@@ -141,12 +141,11 @@
        inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
 
           valid_lft forever preferred_lft forever
+```
 
 在pods中的容器网络用的是kube-ipvs0
 
-::
-
-
+```
    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1
 
        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -166,6 +165,7 @@
        inet 10.233.97.175/32 scope global eth0
 
           valid_lft forever preferred_lft forever
+```
 
 -  解决方案：
 

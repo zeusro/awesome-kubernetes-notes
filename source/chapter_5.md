@@ -207,11 +207,7 @@ apply 可以执行多次，如果发现文件不同，则更新
 
 
    kubectl create -f pod-demo.yaml
-
-::
-
    kubectl get pods -o wide
-
 
 
    NAME       READY   STATUS    RESTARTS   AGE   IP            NODE    NOMINATED NODE   READINESS GATES

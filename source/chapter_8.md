@@ -268,7 +268,7 @@ service 的域名直接解析为 nodeIP 从而直接访问 nodeIP 上的 POD。
 
 -  清单示例
 
-::
+
 
    apiVersion: v1
    kind: Service
@@ -298,7 +298,7 @@ service 的域名直接解析为 nodeIP 从而直接访问 nodeIP 上的 POD。
 
    dig -t A myapp-nohead.default.svc.cluster.local. @10.96.0.10
 
-::
+
 
    ;; ANSWER SECTION:
    myapp-nohead.default.svc.cluster.local. 5 IN A  10.244.1.75
