@@ -194,7 +194,7 @@ POD 来创建一个固定的端点。
 
 -  拷贝宿主机文件或目录到pod中，⚠️要求tar二进制文件已经存在容器中，不然拷贝会失败
 
-.. code:: shell
+```
 
    kubectl cp /tmp/foo_dir <some-pod>:/tmp/bar_dir
     
@@ -208,21 +208,22 @@ POD 来创建一个固定的端点。
    -rw------- 1 root root 55390720 May 27 01:49 flannel.tar
    -rw-r--r-- 1 root root      612 Jul 11  2017 index.html
    drwxr-xr-x 4 root root       51 Aug 17 14:16 mainfile
+```
 
 4.5 port-forward
 ----------------
 
 -  端口转发，将svc地址或着pods端口利用kubelet映射到宿主机上,将访问宿主机的8888端口的所有流量转发到8111svc
 
-.. code:: shell
-
+```
    kubectl port-forward --address 0.0.0.0 service/nginx 8888 8111
+```
 
 -  转发pods端口,将访问宿主机的8888端口流量转发到pod的5000端口
 
-.. code:: shell
-
+```
    kubectl port-forward pod/mypod 8888:5000
+```
 
 4.6 coredns
 -----------
@@ -331,8 +332,7 @@ service 提供了对 pod 的固定访问端点，但是 service
 
    kubectl describe service nginx
 
-.. code:: shell
-
+```
    Name:              nginx
    Namespace:         default
    Labels:            run=nginx-deploy
@@ -345,6 +345,7 @@ service 提供了对 pod 的固定访问端点，但是 service
    Endpoints:         10.244.2.4:80          # 当 service 的后端，当 POD 发生变动则立即会更新
    Session Affinity:  None
    Events:            <none>
+```
 
 -  查看 POD 的标签，会看到拥有 run=nginx-deploy
    标签的容器，而人为删除一个 POD
@@ -355,10 +356,11 @@ service 提供了对 pod 的固定访问端点，但是 service
    kubectl get pods --show-labels
 
 
-
+```
    NAME                            READY   STATUS    RESTARTS   AGE     LABELS
    client                          1/1     Running   0          21m     run=client
    nginx-deploy-5c9b546997-kh88w   1/1     Running   0          8m37s   pod-template-hash=5c9b546997,run=nginx-deploy
+```
 
 -  查看 POD 的详细信息，也可以查看到 POD 的详细信息
 
@@ -376,9 +378,11 @@ service 提供了对 pod 的固定访问端点，但是 service
 
 
 
+```
    关系与:  KEY,KEY KEY=VALUE2,KEY=VALUE2       # -l run,app
    等值关系:KEY = VALUE KEY != VALUE           # -l run=nginx-deploy,app!=myapp
    集合关系:KYE in|not in (VALUE1,VALUE2)      # -l "release in (canary,bata,alpha)"  
+```
 
 -  显示指定的标签的值，下面显示了两个标签
 
@@ -408,25 +412,22 @@ service 提供了对 pod 的固定访问端点，但是 service
 -  许多资源支持内嵌字段来定义其使用的标签选择器，例如 service 关联 pod
    时候：
 
-
-
+```
    matchLabels: 直接给定键值
    matchExpressions: 基于给定的表达式来定义使用标签选择器: {key:"KEY",operator:"OPERATOR",value:[VAL1,VAL2,...]}
        使用 key 与 value 进行 operator 运算, 复合条件的才被选择
        操作符:
            In, NotIn: 其 value 列表必须有值
            Exists, NotExists: 其 value 必须为空
+```
 
 -  k8s 中很多对象都可以打标签，例如给 nodes
    打一个标记，随后在添加资源时候就可以让资源对节点有倾向性了
 
-
-
+```
    kubectl label nodes node2 disktype=ssd
-
-
-
    kubectl get nodes --show-labels
+```
 
 4.10 动态扩容
 -------------
@@ -434,12 +435,11 @@ service 提供了对 pod 的固定访问端点，但是 service
 -  扩容一个集群的的 POD，下面命令表示修改 deployment 控制器下的
    nginx-deply 容器的副本数量为2
 
-
-
+```
    kubectl scale --replicas=5 deployment nginx-deploy
    kubectl scale deployment/nginx-deployment --replicas=2
    kubectl autoscale deployment <deployment-name> --min=2 --max=5 --cpu-percent=80
-
+```
 
 4.11 滚动升级
 -------------
@@ -458,7 +458,7 @@ service 提供了对 pod 的固定访问端点，但是 service
    kubectl rollout status deployment nginx-deploy
 
 
-
+```
    [root@node1 ~]# kubectl rollout status deployment nginx-deploy
    Waiting for deployment "nginx-deploy" rollout to finish: 3 out of 5 new replicas have been updated...
    Waiting for deployment "nginx-deploy" rollout to finish: 3 out of 5 new replicas have been updated...
@@ -478,12 +478,14 @@ service 提供了对 pod 的固定访问端点，但是 service
    Waiting for deployment "nginx-deploy" rollout to finish: 1 old replicas are pending termination...
    Waiting for deployment "nginx-deploy" rollout to finish: 4 of 5 updated replicas are available...
    deployment "nginx-deploy" successfully rolled out
+```
 
 -  回滚操作，不指定任何的镜像则为上一个版本的镜像
 
-
+```
    kubectl rollout undo deployment/nginx-deployment --to-revision=2
    kubectl rollout undo deployment nginx-deploy
+```
 
 ..
 
@@ -497,23 +499,21 @@ service 提供了对 pod 的固定访问端点，但是 service
     kubectl get event --all-namespaces  --field-selector involvedObject.name=$po
 ```
 
-
-
 4.13 logs(排查日志)
 -------------
 
 -  查看一个 pod 的某个容器的运行日志
 
-
-
+```
    kubectl logs pod-demo busybox
+```
 
 4.14 exec (连入 POD 容器)
 ------------------
 
-
-
+```
    kubectl exec -it pod-demo -c myapp -- /bin/sh
+```
 
 ## 4.15 delete （删除资源）
 
@@ -581,4 +581,3 @@ echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~
 ```
 
 其他的方式见[kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-
