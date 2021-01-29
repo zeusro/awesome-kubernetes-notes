@@ -10,4 +10,4 @@
 [Zeusro](https://github.com/zeusro)
 
 **求包养**：
-![微信支付宝合一](zeusro.jpg)
+![微信支付宝合一](images/readme/zeusro.jpg)
