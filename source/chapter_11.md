@@ -1,5 +1,4 @@
 
-
 十一 配置信息容器化
 ===================
 
@@ -19,7 +18,6 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 
 -  Secret与ConfigMap对比
 
-::
 
    相同点：
    -   key / value 的形式 
@@ -39,13 +37,13 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 
 -  env，详见：kubectl explain pods.spec.containers.env
 
-.. code:: yaml
-
+```
    name              <string>  # 变量名称
    value             <string>  # 变量的值
    valueFrom         <Object>  # 引用值，如：configMap 的某个键、POD 定义中的字段名，如：metadata.labels
    resourceFieldRef  <Object>  # 引用资源限制中的值
    secretKeyRef      <Object>  # 引用 secretKey
+```
 
 11.2 configMap
 --------------
@@ -96,8 +94,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 
 -  创建 ConfigMap 并在 POD ENV 中使用
 
-.. code:: yaml
-
+```
    apiVersion: v1
    kind: ConfigMap                                        # 创建 ConfigMap 对象
    metadata:
@@ -142,6 +139,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
                configMapKeyRef:
                  name: nginx-config
                  key: server_name
+```
 
 11.2.2 挂载为 POD 卷
 ~~~~~~~~~~~~~~~~~~~~
@@ -149,8 +147,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
 -  configMap 中的数据可以在容器内挂载为文件，并且当 configMap
    中的数据发生变动的时候，容器内的文件相应也会发生变动，但不会重载容器内的进程。
 
-.. code:: yaml
-
+```
    apiVersion: v1
    kind: ConfigMap                                     # 创建 ConfigMap
    metadata:
@@ -224,6 +221,7 @@ POD 提供存储空间，而是为用户提供了从集群外部到 POD
              - key: index
                path: index.html
                mode: 0644
+```
 
 -  启动后进入容器查看文件是否正常挂载
 
@@ -285,8 +283,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
 -  POD 创建时候，从 docker hub 拉取镜像使用的用户名密码，kubectl explain
    pods.spec 的 imagePullSecrets 字段
 
-.. code:: yaml
-
+```
    apiVersion: v1
    kind: Pod
    metadata:
@@ -297,13 +294,12 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
        image: redis
      imagePullSecrets:                         # 获取镜像需要的用户名密码
       - name: regsecret                        # secret 对象
+```
 
 11.3.2 私有仓库认证2
 ~~~~~~~~~~~~~~~~~~~~
 
 -  首先通过命令行创建出来 secret
-
-
 
    kubectl create secret docker-registry regsecret --docker-server=registry-vpc.cn-hangzhou.aliyuncs.com --docker-username=admin --docker-password=123456 --docker-email=420123641@qq.com
 
@@ -353,8 +349,7 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
 -  secret 中的数据可以在容器内挂载为文件，然后在 nginx
    容器内使用证书文件
 
-.. code:: yaml
-
+```yaml
    apiVersion: v1
    kind: Pod
    metadata:
@@ -387,3 +382,4 @@ configMap 是明文存储数据的，如果需要存储敏感数据，则需要�
              - key: tls.crt
                path: index.html
                mode: 0644
+```
