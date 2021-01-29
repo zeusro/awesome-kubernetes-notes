@@ -12,7 +12,7 @@
 -  为 dashboard 提供 ssl 证书
 
 
-
+```
    # 生成私钥
    (umask 077; openssl genrsa -out dashboard.key 2048)
 
@@ -21,10 +21,9 @@
 
    # 查看证书
    openssl x509 -in dashboard.crt -text -noout
+```
 
 -  下载 dashboard 的清单文件
-
-
 
    wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 

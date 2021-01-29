@@ -130,8 +130,7 @@
 
    最先杀死占用量和需求量的比例大的
 
-参考链接
---------
+## 参考链接
 
 -  `Kubernetes官网教程 <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/>`__
 -  `Kubernetes中文社区 <https://www.kubernetes.org.cn/k8s>`__
@@ -151,16 +150,4 @@
 视频
 ~~~~
 
--  `马哥(docker容器技术+k8s集群技术) <https://www.bilibili.com/video/av35847195/?p=16&t=3931>`__
 -  `微服务容器化实战 <https://www.acfun.cn/v/ac10232871>`__
-
---------------
-
-如果此笔记对您有任何帮助，更多文章，欢迎关注博客一块学习交流👏
-
-请我喝茶
-~~~~~~~~~~~~
-
-|微信支付宝合一|
-
-.. |微信支付宝合一| image:: zeusro.jpg
