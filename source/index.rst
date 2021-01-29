@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to kaliarch kubernetes-note's documentation!
+做更好的 kubernetes 中文书
 ====================================================
 
 .. toctree::
@@ -12,11 +12,11 @@ Welcome to kaliarch kubernetes-note's documentation!
 
    chapter_0.md
    chapter_1.md
-   chapter_2
-   chapter_3
-   chapter_4
-   chapter_5
-   chapter_6   
+   chapter_2.md
+   chapter_3.md
+   chapter_4.md
+   chapter_5.md
+   chapter_6.md
    chapter_7.md
    chapter_8.md
    chapter_9.md
@@ -31,7 +31,7 @@ Welcome to kaliarch kubernetes-note's documentation!
    chapter_18.md
    chapter_19.md
    chapter_20.md
-   chapter_21.rst
+   chapter_21.md
    chapter_22.rst
    chapter_23.rst
    chapter_24.rst   
