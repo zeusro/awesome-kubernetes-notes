@@ -910,3 +910,15 @@ etcd-0-14配置：
 -  https://juejin.im/post/5dabc50ef265da5b591b761a
 
 -  https://www.infoq.cn/article/coreos-analyse-etcd/
+
+.. |image0| image:: images/etcd/1.png
+.. |image1| image:: images/etcd/2.png
+.. |image2| image:: images/etcd/3.png
+.. |image3| image:: images/etcd/4.png
+.. |image4| image:: images/etcd/5.png
+.. |image5| image:: images/etcd/6.png
+.. |image6| image:: images/etcd/7.png
+.. |image7| image:: images/etcd/8.png
+.. |image8| image:: images/etcd/9.png
+.. |image9| image:: images/etcd/10.png
+.. |image10| image:: images/etcd/11.png

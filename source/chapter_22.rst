@@ -102,48 +102,48 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
    文件存在并认证成功
 -  tiller 配置 rbac，新建 rbac-config.yaml，并应用
 
-.. code:: bash
+
 
    https://github.com/helm/helm/blob/master/docs/rbac.md    # 在这个页面中找到 rbac-config.yaml 
 
-.. code:: bash
+
 
    $ kubectl apply -f tiller-rbac.yaml
 
 -  初始化 tiller 时候会自动读取 ~/.kube 目录，所以需要确保 config
    文件存在并认证成功
 
-.. code:: bash
+
 
    $ helm init --service-account tiller
 
 -  添加 incubator 源
 
-.. code:: bash
+
 
    $ helm repo add incubator https://aliacs-app-catalog.oss-cn-hangzhou.aliyuncs.com/charts-incubator/
    $ helm repo update
 
 -  安装完成，查看版本
 
-.. code:: bash
+
 
    $ helm version
 
-.. code:: bash
+
 
    Client: &version.Version{SemVer:"v2.13.1", GitCommit:"618447cbf203d147601b4b9bd7f8c37a5d39fbb4", GitTreeState:"clean"}
    Server: &version.Version{SemVer:"v2.9.1", GitCommit:"20adb27c7c5868466912eebdf6664e7390ebe710", GitTreeState:"clean"}
 
 -  helm 官方可用的 chart 仓库
 
-.. code:: bash
+
 
    http://hub.kubeapps.com/
 
 -  命令基本使用
 
-.. code:: bash
+
 
    completion  # 为指定的shell生成自动完成脚本（bash或zsh）
    create      # 创建一个具有给定名称的新 chart
@@ -176,38 +176,38 @@ Release。Chart 与 Release 的关系类似于面向对象中的类与实例的�
 
 -  指定 values.yaml 部署一个 chart
 
-.. code:: bash
+
 
    helm install --name els1 -f values.yaml stable/elasticsearch
 
 -  升级一个 chart
 
-.. code:: bash
+
 
    helm upgrade --set mysqlRootPassword=passwd db-mysql stable/mysql
 
 -  回滚一个 chart
 
-.. code:: bash
+
 
    helm rollback db-mysql 1
 
 -  删除一个 release
 
-.. code:: bash
+
 
    helm delete --purge db-mysql
 
 -  只对模板进行渲染然后输出，不进行安装
 
-.. code:: bash
+
 
    helm install/upgrade xxx --dry-run --debug
 
 22.4 Chart文件组织
 ------------------
 
-.. code:: bash
+
 
    myapp/                               # Chart 目录
    ├── charts                           # 这个 charts 依赖的其他 charts，始终被安装
@@ -289,7 +289,7 @@ helm
 
 -  下载 elasticsearch 的 StatfullSet 的 chart
 
-.. code:: bash
+
 
    helm fetch stable/elasticsearch
 
@@ -301,13 +301,13 @@ helm
 
 -  使用 helm 指定 values.yaml 部署 elasticsearch
 
-.. code:: bash
+
 
    helm install --name els1 -f values.yaml stable/elasticsearch
 
 -  安装后查看，调试直到全部处于 READY 状态
 
-.. code:: bash
+
 
    $ kubectl get pods
    NAME                                         READY   STATUS    RESTARTS   AGE
@@ -322,7 +322,7 @@ helm
 
 -  也可以使用 helm 命令查看
 
-.. code:: bash
+
 
    $ helm status els1
 
@@ -384,7 +384,7 @@ helm
 
 -  启动一个临时的容器，解析集群地址，测试集群信息，查看集群节点
 
-.. code:: bash
+
 
    $ kubectl run cirros1 --rm -it --image=cirros -- /bin/sh
 
@@ -408,25 +408,25 @@ helm
 
 -  安装 kiwigrid 源
 
-.. code:: bash
+
 
    helm repo add kiwigrid https://kiwigrid.github.io
 
 -  下载 fluentd-elasticsearch
 
-.. code:: bash
+
 
    helm fetch kiwigrid/fluentd-elasticsearch
 
 -  获取集群地址
 
-.. code:: bash
+
 
    els1-elasticsearch-client.default.svc.cluster.local:9200
 
 -  编辑修改 values.yaml，指定 elasticsearch 集群的位置
 
-.. code:: bash
+
 
    elasticsearch:
      host: 'els1-elasticsearch-client.default.svc.cluster.local'
@@ -458,13 +458,13 @@ helm
 
 -  使用 helm 指定 values.yaml 部署 fluentd-elasticsearch
 
-.. code:: bash
+
 
    helm install --name flu1 -f values.yaml kiwigrid/fluentd-elasticsearch
 
 -  查看状态 flu1 这个 helm 服务的运行状态
 
-.. code:: bash
+
 
    [root@master fluentd-elasticsearch]# helm status flu1
    LAST DEPLOYED: Sun May 12 18:13:12 2019
@@ -517,7 +517,7 @@ helm
 
 -  是否生成了索引，直接使用访问 elasticsearch 的 RESTfull API 接口。
 
-.. code:: bash
+
 
    $ kubectl run cirros1 --rm -it --image=cirros -- /bin/sh
    / # curl els1-elasticsearch-client.default.svc.cluster.local:9200/_cat/indices
@@ -530,13 +530,13 @@ helm
 
 -  下载 stable/kibana
 
-.. code:: bash
+
 
    helm fetch stable/kibana
 
 -  编辑 values.yaml，修改 elasticsearch 指向 elasticsearch 集群的地址
 
-.. code:: bash
+
 
    elasticsearch.hosts: http://els1-elasticsearch-client.default.svc.cluster.local:920
 
@@ -549,13 +549,13 @@ helm
 
 -  使用 helm 指定 values.yaml 部署 kibana
 
-.. code:: bash
+
 
    helm install --name kib1 -f values.yaml stable/kibana
 
 -  获取 service 端口
 
-.. code:: bash
+
 
    $ kubectl get svc
    NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
@@ -567,6 +567,6 @@ helm
 
 -  由于 service 工作在 NodePort 模式下，所以可以在集群外部访问了
 
-.. code:: bash
+
 
    172.16.100.6:31537

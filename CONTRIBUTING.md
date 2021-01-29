@@ -20,6 +20,3 @@ make help html
 参考：
 1. [](https://github.com/mathLab/PyGeM/issues/94)
 1. [](https://www.jianshu.com/p/78e9e1b8553a)
-1. []()
-1. []()
-1. []()
